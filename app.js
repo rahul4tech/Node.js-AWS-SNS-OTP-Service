@@ -2,6 +2,7 @@ const express = require('express');
 const verifyApiKey = require('./middleware/verifyApiKey');
 const app = express();
 require('dotenv').config();
+const port = process.env.PORT || 3000;
 
 const AWS = require('aws-sdk');
 
@@ -44,4 +45,4 @@ app.post('/', verifyApiKey, async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('AWS SNS SMS OTP Service Listening on PORT 3000'));
+app.listen(port, () => console.log(`AWS SNS SMS OTP Service Listening on PORT ${port}`));
