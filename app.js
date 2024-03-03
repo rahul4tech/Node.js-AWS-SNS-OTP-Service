@@ -45,4 +45,10 @@ app.post('/', verifyApiKey, async (req, res) => {
   }
 });
 
+// handle 404 errors
+app.use((req, res) => {
+  res.status(404).json({ error: true, code: 404, message: 'Not Found: The requested resource was not found', path: req.url });
+});
+
+
 app.listen(port, () => console.log(`AWS SNS SMS OTP Service Listening on PORT ${port}`));
